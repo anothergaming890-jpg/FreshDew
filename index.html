@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshDew - Farm-Fresh Goods Delivery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ======== HEADER (NOW DYNAMIC) ======== -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo"><img src="images/FreshDew-NameLogo.png"></a>
+            <nav class="nav-main">
+                <a href="index.html">Home</a>
+                <a href="index.html#categories">Categories</a>
+                <a href="index.html#bestselling">Best Selling</a>
+                <a href="index.html#onsale">On Sale</a>
+                <a href="about.html">About Us</a>
+            </nav>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Products">
+                <button>Search</button>
+            </div>
+            <div class="nav-auth">
+                                    <!-- User is logged out -->
+                    <a href="login.html" class="login-btn">Login</a>
+                    <a href="signup.html" class="signup-btn">Sign Up</a>
+                            </div>
+        </div>
+    </header>
+
+    <!-- ======== MAIN CONTENT ======== -->
+    <main class="container">
+        <section id="categories" class="home-section">
+            <h2>Categories</h2>
+            <div id="category-grid" class="category-grid">
+                <!-- Categories will be loaded by JavaScript -->
+            </div>
+        </section>
+
+        <section id="bestselling" class="home-section">
+            <h2>Best Selling Products</h2>
+            <div id="bestselling-grid" class="product-grid">
+                <!-- Products will be loaded by JavaScript -->
+            </div>
+        </section>
+
+        <section id="onsale" class="home-section">
+            <h2>On Sale</h2>
+            <div id="onsale-grid" class="product-grid">
+                <!-- Products will be loaded by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <!-- ======== FOOTER ======== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>Email: freshdew.example@email.com</p>
+                <p>Address: Nowhere Street, Nowhere City, Philippines</p>
+                <p>Phone Number: (+63) 9876543210</p>
+                <p>Line Number: (02) 8123-4567</p>
+            </div>
+            <div class="footer-section">
+                <h4>Language</h4>
+                <ul class="language-list">
+                    <li>English (US)</li>
+                    <li>English (UK)</li>
+                    <li>Filipino</li>
+                    <li>Español</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Otther Services</h4>
+                <p>Coming soon...</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 FreshDew. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Link to JavaScript (no change needed here) -->
+    <script>
+        // Wait for the HTML document to be fully loaded before running script
+document.addEventListener("DOMContentLoaded", () => {
+
+    // --- MOCK DATA (based on PDF mockups) ---
+    // In a real app, this would come from a database via an API
+    
+    const categories = [
+      { id: 1, name: "Processed Goods", desc: "jams, honey, pickles, and home-made snacks" },
+      { id: 2, name: "Fresh Produced", desc: "fruits, vegetables, and greens" },
+      { id: 3, name: "Dairy & Eggs", desc: "creamy milk to rich cheeses and farm-fresh eggs" },
+      { id: 4, name: "Meat & Poultry", desc: "chicken, beef, pork, and seafood" },
+      { id: 5, name: "Grain & Rice", desc: "high-quality rice, corn, and grains" },
+    ];
+    
+    const bestSelling = [
+      { id: 101, name: "Whole Chicken", stock: "In Stock", image: "images/Whole Chicken.jpg" },
+      { id: 102, name: "Free-Range Eggs", stock: "In Stock", image: "images/Free-Range Eggs.jpg" },
+      { id: 103, name: "Spam", stock: "Fully Stocked", image: "images/Spam.webp" },
+      { id: 104, name: "Frozen Processed Meats", stock: "In Stock", image: "images/Frozen Processed Meats.webp" },
+      { id: 105, name: "Fresh Milled Rice", stock: "In Stock", image: "images/Fresh Milled Rice.jfif"},
+    ];
+    
+    const onSale = [
+      { id: 201, name: "Fresh Milk", stock: "In Stock", image: "images/Fresh Milk.jpg" },
+      { id: 202, name: "A4 Wagyu Steak", stock: "Over 13 slabs left in stock", image: "images/A4 Wagyu Steak.jfif" },
+      { id: 203, name: "Canned Goods", stock: "In Stock", image: "images/Canned Goods.jpg" },
+    ];
+
+
+    // --- Helper function to create a product card HTML string ---
+    function createProductCard(product) {
+        return `
+            <div class="product-card">
+                <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.src='https://placehold.co/200x150/f0f0f0/ccc?text=Image+Not+Found';">
+                <h4 class="product-title">${product.name}</h4>
+                <p class="product-stock">${product.stock}</p>
+                <button class="product-add-btn">Add to Cart</button>
+            </div>
+        `;
+    }
+
+    // --- Helper function to create a category card HTML string ---
+    function createCategoryCard(category) {
+        return `
+            <div class="category-card">
+                <h3>${category.name}</h3>
+                <p>${category.desc}</p>
+            </div>
+        `;
+    }
+
+    // --- Function to load all data onto the Home Page ---
+    function loadHomePageData() {
+        const categoryGrid = document.getElementById("category-grid");
+        const bestsellingGrid = document.getElementById("bestselling-grid");
+        const onsaleGrid = document.getElementById("onsale-grid");
+
+        // Check if we are on the Home Page (by checking if the grids exist)
+        if (categoryGrid && bestsellingGrid && onsaleGrid) {
+            
+            // 1. Load Categories
+            let categoryHTML = '';
+            categories.forEach(cat => {
+                categoryHTML += createCategoryCard(cat);
+            });
+            categoryGrid.innerHTML = categoryHTML;
+
+            // 2. Load Best Selling
+            let bestsellingHTML = '';
+            bestSelling.forEach(prod => {
+                bestsellingHTML += createProductCard(prod);
+            });
+            bestsellingGrid.innerHTML = bestsellingHTML;
+
+            // 3. Load On Sale
+            let onsaleHTML = '';
+            onSale.forEach(prod => {
+                onsaleHTML += createProductCard(prod);
+            });
+            onsaleGrid.innerHTML = onsaleHTML;
+        }
+    }
+
+    // Run the function to load the data
+    loadHomePageData();
+    
+});
+    </script>
+</body>
+</html>
