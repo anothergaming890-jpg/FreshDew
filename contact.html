@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - FreshDew</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ======== HEADER ======== -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo"><img src="images/FreshDew-NameLogo.png"></a>
+            <nav class="nav-main">
+                <a href="index.html">Home</a>
+                <a href="index.html#categories">Categories</a>
+                <a href="index.html#bestselling">Best Selling</a>
+                <a href="index.html#onsale">On Sale</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a> <!-- New link -->
+            </nav>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Products">
+                <button>Search</button>
+            </div>
+            <div class="nav-auth">
+                <!-- This part would be dynamic in PHP, but is static in HTML -->
+                <a href="login.html" class="login-btn">Login</a>
+                <a href="signup.html" class="signup-btn">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ======== MAIN CONTENT ======== -->
+    <main class="container">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h1>Get in Touch</h1>
+                <p>We'd love to hear from you. Whether you have a question about our products, delivery, or anything else, our team is ready to answer all your questions.</p>
+                
+                <h3>Contact Information</h3>
+                <p><strong>Email:</strong> freshdew.example@email.com</p>
+                <p><strong>Address:</strong> Nowhere Street, Nowhere City, Philippines</p>
+                <p><strong>Phone Number:</strong> (+63) 9876543210</p>
+                <p><strong>Line Number:</strong> (02) 8123-4567</p>
+            </div>
+
+            <form class="contact-form" action="#" method="POST">
+                <h2>Send Us a Message</h2>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+                </div>
+                <button type="submit" class="login-submit-btn">Send Message</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- ======== FOOTER ======== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>Email: freshdew.example@email.com</p>
+                <p>Address: Nowhere Street, Nowhere City, Philippines</p>
+                <p>Phone Number: (+63) 9876543210</p>
+                <p>Line Number: (02) 8123-4567</p>
+            </div>
+            <div class="footer-section">
+                <h4>Language</h4>
+                <ul class="language-list">
+                    <li>English (US)</li>
+                    <li>English (UK)</li>
+                    <li>Filipino</li>
+                    <li>Español</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Otther Services</h4>
+                <p>Coming soon...</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 FreshDew. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
